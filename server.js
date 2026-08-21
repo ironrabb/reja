@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 // 3 VIEWSGA BOGLIQ KODLAR
 app.set("views", "views");
 app.set("view ejs", "ejs");
-// 4 TOUTING KODLAR
+// 4 ROUTING KODLAR
 app.get("/hello", function (req, res) {
   res.end(`<h1 style="background: blue ">HELLO   WORLD</h1>`);
 });
