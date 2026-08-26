@@ -2,6 +2,15 @@ console.log(" web serverni boshlash");
 const express = require("express");
 const http = require("http");
 const app = express();
+const fs = require("fs");
+let user;
+fs.readFile("database/user.json", "utf8", (err, data) => {
+  if (err) {
+    console.log("ERROR", err);
+  } else {
+    user = JSON.parse(data);
+  }
+});
 // const res = require("express/lib/response");
 // 1 KRISH KODLARI
 app.use(express.static("public")); // kirib kelayotgan malumotlar uchun faqt public folderi ochiq degan manoni bldradi
@@ -26,9 +35,13 @@ app.get("/", function (req, res) {
   res.render("harid");
 });
 
+app.get("/author", (req, res) => {
+  res.render("author", { user: user });
+});
+
 //
 const server = http.createServer(app);
-let PORT = 3001;
+let PORT = 3005;
 server.listen(PORT, function () {
   console.log(`the server is running succesfull on port: ${PORT}`);
 });
