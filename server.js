@@ -5,6 +5,7 @@ const app = express();
 const fs = require("fs");
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
+  // ✅ Asinxron — fayl o'qish (to'xtamaydi)
   if (err) {
     console.log("ERROR", err);
   } else {
@@ -15,7 +16,7 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
 // 1 KRISH KODLARI
 app.use(express.static("public")); // kirib kelayotgan malumotlar uchun faqt public folderi ochiq degan manoni bldradi
 app.use(express.json()); // json formatga ogirib beradi
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // Forma ma'lumotlarini o'qish
 // SEESIONGA BOGLIQ KODLAR
 // 3 VIEWSGA BOGLIQ KODLAR
 app.set("views", "views");
