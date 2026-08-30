@@ -1,32 +1,44 @@
-// 22-dars Asynchronous functionlarni qo'llash
-const list = [
-  "yahshi talaba boling", // 7-20 yosh
-  "togri boshliq tanlang va koproq hato qiling", // 20-30 yosh
-  "uzingizga ishlashingizni boshlang", // 30-40 yosh
-  "siz kuchli bolgan narsalarni qiling", // 40-50 yosh
-  "yoshlarga investitsiya qiling", // 50-60 yosh
-  "endi dam oling, foydasi yoq endi", // 60+ yosh
-];
-async function maslahatBering(a) {
-  if (typeof a !== "number") throw new Error("insert a number");
-  else if (a <= 20) return list[0];
-  else if (a > 20 && a <= 30) return list[1];
-  else if (a > 30 && a <= 40) return list[2];
-  else if (a > 40 && a <= 50) return list[3];
-  else if (a > 50 && a <= 60) return list[4];
-  else {
-    return new Promise((resolve, reject) => {
-      // promise orqali set time out function ishlatish
-      setTimeout(() => {
-        resolve(list[5]);
-      }, 5000);
-    });
-    // return list[5];
-    // setTimeout(function () {
-    // return list[5];
-    // }, 5000);
+// MIT A TASK SOZDA HARF NECHA MARTA UCHRAGANINI TOPISH
+function countLetter(letter, word) {
+  let count = 0;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === letter) {
+      count++;
+    }
   }
+  return count;
 }
+console.log(countLetter("t", "mit")); // t harfi mit sozida bitta ishlatilgan
+
+// 22-dars Asynchronous functionlarni qo'llash
+// const list = [
+//   "yahshi talaba boling", // 7-20 yosh
+//   "togri boshliq tanlang va koproq hato qiling", // 20-30 yosh
+//   "uzingizga ishlashingizni boshlang", // 30-40 yosh
+//   "siz kuchli bolgan narsalarni qiling", // 40-50 yosh
+//   "yoshlarga investitsiya qiling", // 50-60 yosh
+//   "endi dam oling, foydasi yoq endi", // 60+ yosh
+// ];
+// async function maslahatBering(a) {
+//   if (typeof a !== "number") throw new Error("insert a number");
+//   else if (a <= 20) return list[0];
+//   else if (a > 20 && a <= 30) return list[1];
+//   else if (a > 30 && a <= 40) return list[2];
+//   else if (a > 40 && a <= 50) return list[3];
+//   else if (a > 50 && a <= 60) return list[4];
+//   else {
+//     return new Promise((resolve, reject) => {
+//       // promise orqali set time out function ishlatish
+//       setTimeout(() => {
+//         resolve(list[5]);
+//       }, 5000);
+//     });
+//     // return list[5];
+//     // setTimeout(function () {
+//     // return list[5];
+//     // }, 5000);
+//   }
+// }
 // //then,catch
 // console.log("passed here 0");
 // maslahatBering(20) //asinxron fumction sinxron fuksin ishlabogandan keyin ishga tushadi
@@ -38,15 +50,15 @@ async function maslahatBering(a) {
 //   });
 // console.log("passed here 1");
 // async await
-async function run() {
-  let javob = await maslahatBering(20);
-  console.log(javob);
-  javob = await maslahatBering(365);
-  console.log(javob);
-  javob = await maslahatBering(41);
-  console.log(javob);
-}
-run();
+// async function run() {
+//   let javob = await maslahatBering(20);
+//   console.log(javob);
+//   javob = await maslahatBering(365);
+//   console.log(javob);
+//   javob = await maslahatBering(41);
+//   console.log(javob);
+// }
+// run();
 // ============================================================
 // NODE.JS — SINGLE THREAD 21-dars    CALLBACK FUNTION
 // ============================================================
