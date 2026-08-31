@@ -1,12 +1,12 @@
 // console.log("heyy");
 // const http = require("http");
-
 // const mongodb = require("mongodb");
 
-// // mongo db ulash
+// // mongo db ulash fZy2iLQKsCFe7tN3
 // let db;
 // const connectionString =
-//   "mongodb+srv://gimmyeongil641_db_user:fZy2iLQKsCFe7tN3@cluster0.wlegmsp.mongodb.net/REJA";
+//   "mongodb+srv://gimmyeongil641_db_user:fZy2iLQKsCFe7tN3@cluster0.wlegmsp.mongodb.net/?appName=Cluster0";
+// console.log(JSON.stringify(connectionString));
 // mongodb.connect(
 //   connectionString,
 //   {
@@ -14,12 +14,15 @@
 //     useUnifiedTopology: true,
 //   },
 //   (err, client) => {
-//     if (err) console.log("error on connection mongo db");
-//     else {
+//     if (err) {
+//       console.log("error on connection mongo db:", err); // to'liq xato matni
+//     } else {
 //       console.log("mongo db ulanmoqda");
+//       db = client.db("REJA");
+
 //       const app = require("./app.js");
 //       const server = http.createServer(app);
-//       let PORT = 3006;
+//       let PORT = 3010;
 //       server.listen(PORT, function () {
 //         console.log(
 //           `the server is running succesfull on port: ${PORT}, http://localhost:${PORT}`,
@@ -28,7 +31,7 @@
 //     }
 //   },
 // );
-// //
+
 console.log("heyy");
 const http = require("http");
 const { MongoClient } = require("mongodb");
@@ -49,7 +52,7 @@ client
 
     const app = require("./app.js");
     const server = http.createServer(app);
-    let PORT = 3006;
+    let PORT = 3010;
     server.listen(PORT, function () {
       console.log(
         `the server is running succesfull on port: ${PORT}, http://localhost:${PORT}`,
@@ -59,6 +62,5 @@ client
   .catch((err) => {
     console.log("error on connection mongo db:", err);
   });
-
 module.exports = { getDb: () => db };
-module.exports = client;
+// module.exports = client;

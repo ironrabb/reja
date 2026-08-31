@@ -13,7 +13,7 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
   }
 });
 // MONGO DB CHAQIRISH
-const db = require("./server").db();
+const db = require("./server.js").getDb(); // ✅ TO'G'RI
 // const res = require("express/lib/response");
 // 1 KRISH KODLARI
 app.use(express.static("public")); // kirib kelayotgan malumotlar uchun faqt public folderi ochiq degan manoni bldradi
@@ -30,14 +30,55 @@ app.set("view engine", "ejs");
 // app.get("/gift", function (req, res) {
 //   res.end(`<h1 style="background: yellow ">siz sovgalar bolimidasz</h1>`);
 // });
-app.post("/create-item", (req, res) => {
-  console.log(req.body);
-  res.json({ test: "succes" }); //json shalida malumotni qaytarish
+// app.post("/create-item", (req, res) => {
+//   console.log(req.body);
+//   // res.json({ test: "succes" }); //json shalida malumotni qaytarish
+//   const new_reja = req.body.reja;
+//   db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//       res.end("somthing went wrong");
+//     } else {
+//       res.end("succesfully added");
+//     }
+//   });
+// });
+app.post("/create-item", async (req, res) => {
+  console.log("user enterred /create iteme");
+  const new_reja = req.body.reja;
+  try {
+    await db.collection("plans").insertOne({ reja: new_reja });
+    res.end("succesfully added");
+  } catch (err) {
+    console.log(err);
+    res.end("somthing went wrong");
+  }
 });
-app.get("/", function (req, res) {
-  res.render("reja");
+// app.get("/", function (req, res) {
+//   db.collection("plans")
+//     .find()
+//     .toArray((err, data) => {
+//       if (err) {
+//         console.log(err);
+//         res.end("something went wrong");
+//       } else {
+//         console.log(data);
+//         res.render("reja");
+//       }
+//     });
+//   res.render("reja");
+// });
+app.get("/", async (req, res) => {
+  console.log("user enterred /");
+  try {
+    const data = await db.collection("plans").find().toArray();
+    // console.log(data);
+    res.render("reja", { items: data });
+  } catch (err) {
+    console.log(err);
+    res.end("something went wrong");
+  }
 });
-
 app.get("/author", (req, res) => {
   res.render("author", { user: user });
 });
