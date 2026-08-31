@@ -1,14 +1,28 @@
-// MIT A TASK SOZDA HARF NECHA MARTA UCHRAGANINI TOPISH
-function countLetter(letter, word) {
+// MIT B TASK BERILGAN SOZIMIMZDA NECHTA RAQAM BOR EKANINI TOPISH
+function countDigits(str) {
   let count = 0;
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === letter) {
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] >= "0" && str[i] <= "9") {
       count++;
     }
   }
   return count;
 }
-console.log(countLetter("t", "mit")); // t harfi mit sozida bitta ishlatilgan
+
+console.log(`JAVOB: ${countDigits("ad2a54y79wet0666sfgb9")}`); // 10
+
+// MIT A TASK SOZDA HARF NECHA MARTA UCHRAGANINI TOPISH
+
+// function countLetter(letter, word) {
+//   let count = 0;
+//   for (let i = 0; i < word.length; i++) {
+//     if (word[i] === letter) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+// console.log(countLetter("t", "mit")); // t harfi mit sozida bitta ishlatilgan
 
 // 22-dars Asynchronous functionlarni qo'llash
 // const list = [
