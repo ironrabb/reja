@@ -1,4 +1,6 @@
+// ip adressni hamma joydan accses berdim
 // MIT B TASK BERILGAN SOZIMIMZDA NECHTA RAQAM BOR EKANINI TOPISH
+
 function countDigits(str) {
   let count = 0;
   for (let i = 0; i < str.length; i++) {
