@@ -6,9 +6,9 @@ function itemTemplate(item) {
           <span class="item-text">${item.reja}</span>
           <div>
             <button data-id="${item._id}" class="edit-me btn btn-secondary btn-sm mr-1">
-              Ozgartirish
+              EDIT
             </button>
-            <button data-id="${item._id}" class="delete-me btn btn-danger btn-sm">Ochirish</button>
+            <button data-id="${item._id}" class="delete-me btn btn-danger btn-sm">DELETE</button>
           </div>
         </li>`;
 }
@@ -28,4 +28,25 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     .catch((err) => {
       console.log("iltmos qayta urinib koring");
     });
+});
+document.addEventListener("click", function (e) {
+  // delete button bosilganda
+  if (e.target.classList.contains("delete-me")) {
+    if (confirm("siz rostdan ham ochirmoqchimisiz?")) {
+      axios
+        .post("/delete-item", { id: e.target.getAttribute("data-id") })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.remove();
+        })
+        .catch((err) => {
+          console.log("iltmos qayta urinib koring");
+        });
+    }
+  }
+
+  // edit button bosilganda
+  if (e.target.classList.contains("edit-me")) {
+    alert("siz ozgartirish tugmasini bosdingiz");
+  }
 });

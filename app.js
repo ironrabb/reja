@@ -1,6 +1,7 @@
 console.log(" web serverni boshlash");
 const express = require("express");
-
+// const mongodb = require("mongodb");
+const { ObjectId } = require("mongodb");
 const app = express();
 const fs = require("fs");
 let user;
@@ -52,10 +53,23 @@ app.post("/create-item", async (req, res) => {
     console.log(result);
 
     res.json({
-      success: true,
-      insertedId: result.insertedId, // yangi qo'shilgan yozuvning ID'si
+      _id: result.insertedId,
       reja: new_reja,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "somthing went wrong" });
+  }
+});
+
+app.post("/delete-item", async (req, res) => {
+  const id = req.body.id;
+
+  try {
+    const result = await db
+      .collection("plans")
+      .deleteOne({ _id: new ObjectId(id) });
+    res.json({ success: true, deletedCount: result.deletedCount });
   } catch (err) {
     console.log(err);
     res.status(500).json({ success: false, message: "somthing went wrong" });
