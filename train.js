@@ -1,17 +1,27 @@
+// MIT C task berilgan sozda bir xil harflar bolsa tru aksin false qaytaradi
+function solishtr(str1, str2) {
+  return (
+    str1.toLowerCase().split("").sort().join("") ===
+    str2.toLowerCase().split("").sort().join("")
+  );
+}
+console.log(solishtr("listen", "silent")); // true
+console.log(solishtr("hello", "world")); // false
+
 // ip adressni hamma joydan accses berdim
 // MIT B TASK BERILGAN SOZIMIMZDA NECHTA RAQAM BOR EKANINI TOPISH
 
-function countDigits(str) {
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] >= "0" && str[i] <= "9") {
-      count++;
-    }
-  }
-  return count;
-}
+// function countDigits(str) {
+//   let count = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] >= "0" && str[i] <= "9") {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
 
-console.log(`JAVOB: ${countDigits("ad2a54y79wet0666sfgb9")}`); // 10
+// console.log(`JAVOB: ${countDigits("ad2a54y79wet0666sfgb9")}`); // 10
 
 // MIT A TASK SOZDA HARF NECHA MARTA UCHRAGANINI TOPISH
 
