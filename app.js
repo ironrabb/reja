@@ -44,14 +44,21 @@ app.set("view engine", "ejs");
 //   });
 // });
 app.post("/create-item", async (req, res) => {
-  console.log("user enterred /create iteme");
+  console.log("user enterred /create item");
   const new_reja = req.body.reja;
+
   try {
-    await db.collection("plans").insertOne({ reja: new_reja });
-    res.end("succesfully added");
+    const result = await db.collection("plans").insertOne({ reja: new_reja });
+    console.log(result);
+
+    res.json({
+      success: true,
+      insertedId: result.insertedId, // yangi qo'shilgan yozuvning ID'si
+      reja: new_reja,
+    });
   } catch (err) {
     console.log(err);
-    res.end("somthing went wrong");
+    res.status(500).json({ success: false, message: "somthing went wrong" });
   }
 });
 // app.get("/", function (req, res) {
