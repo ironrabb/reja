@@ -45,7 +45,6 @@ app.set("view engine", "ejs");
 //   });
 // });
 app.post("/create-item", async (req, res) => {
-  console.log("user enterred /create item");
   const new_reja = req.body.reja;
 
   try {
@@ -69,6 +68,29 @@ app.post("/delete-item", async (req, res) => {
     const result = await db
       .collection("plans")
       .deleteOne({ _id: new ObjectId(id) });
+    res.json({ success: true, deletedCount: result.deletedCount });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "somthing went wrong" });
+  }
+});
+app.post("/edit-item", async (req, res) => {
+  const id = req.body.id;
+  const new_reja = req.body.reja;
+
+  try {
+    const result = await db
+      .collection("plans")
+      .updateOne({ _id: new ObjectId(id) }, { $set: { reja: new_reja } });
+    res.json({ success: true, modifiedCount: result.modifiedCount });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "somthing went wrong" });
+  }
+});
+app.post("/delete-all", async (req, res) => {
+  try {
+    const result = await db.collection("plans").deleteMany({});
     res.json({ success: true, deletedCount: result.deletedCount });
   } catch (err) {
     console.log(err);

@@ -1,0 +1,294 @@
+/* ============================================================
+   REJA VA MAQSADLAR — taxta-doska (corkboard) uslubi
+   Shriftlar: Caveat (qo'lyozma sarlavha) + Work Sans (matn)
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --cork: #4a3826;
+  --cork-dark: #362a1c;
+  --paper-a: #fff3c4;
+  --paper-b: #ffe3a8;
+  --paper-c: #dbe8d4;
+  --ink: #33261a;
+  --ink-soft: #6b5842;
+  --pin: #b8433c;
+  --teal: #2f6b5e;
+  --danger: #a63a3a;
+  --danger-dark: #832d2d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Work Sans", sans-serif;
+  color: var(--ink);
+  background-color: var(--cork);
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size:
+    3px 3px,
+    5px 5px;
+  background-position:
+    0 0,
+    2px 2px;
+  padding: 56px 16px 96px;
+}
+
+.container {
+  max-width: 760px;
+}
+
+/* ---------- Sarlavha — doskaga yopishtirilgan qog'oz ---------- */
+
+h1.display-4 {
+  position: relative;
+  display: inline-block;
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  color: var(--ink);
+  transform: rotate(-2deg);
+  margin: 0 auto 32px;
+}
+
+h1.display-4::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 120px;
+  height: 34px;
+  background: rgba(255, 243, 196, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.container > h1.display-4 {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Kiritish formasi — indeks kartochka ---------- */
+
+.jumbotron {
+  background: #fffaf0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  box-shadow: 0 10px 24px rgba(28, 20, 12, 0.35);
+  transform: rotate(-0.4deg);
+}
+
+#create-field.form-control {
+  border: none;
+  border-bottom: 2px solid var(--cork);
+  border-radius: 0;
+  background: transparent;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  padding: 10px 4px;
+}
+
+#create-field.form-control:focus {
+  outline: none;
+  border-bottom-color: var(--teal);
+  box-shadow: none;
+}
+
+#create-form .btn.btn-primary {
+  background: var(--teal);
+  border: none;
+  font-weight: 600;
+  padding: 10px 22px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+#create-form .btn.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(47, 107, 94, 0.4);
+}
+
+#create-form .btn.btn-primary:focus-visible {
+  outline: 3px solid var(--paper-a);
+  outline-offset: 2px;
+}
+
+/* ---------- Rejalar ro'yxati — doska ustidagi qistirmalar ---------- */
+
+#item-list.list-group {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 34px 22px;
+  padding: 20px 4px 8px;
+  margin: 0;
+}
+
+#item-list .list-group-item.list-group-item-info {
+  position: relative;
+  border: none;
+  border-radius: 2px;
+  padding: 26px 16px 44px;
+  font-family: "Work Sans", sans-serif;
+  color: var(--ink);
+  box-shadow: 0 10px 18px rgba(20, 14, 8, 0.35);
+  animation: pin-drop 0.5s ease backwards;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+#item-list li:nth-child(3n + 1) {
+  background: var(--paper-a);
+  transform: rotate(-1.6deg);
+  animation-delay: 0.02s;
+}
+#item-list li:nth-child(3n + 2) {
+  background: var(--paper-b);
+  transform: rotate(1.3deg);
+  animation-delay: 0.08s;
+}
+#item-list li:nth-child(3n) {
+  background: var(--paper-c);
+  transform: rotate(-0.7deg);
+  animation-delay: 0.14s;
+}
+
+#item-list .list-group-item.list-group-item-info:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 16px 26px rgba(20, 14, 8, 0.4);
+  z-index: 2;
+}
+
+/* pin boshchasi */
+#item-list .list-group-item.list-group-item-info::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e2827b, var(--pin) 70%);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.45);
+}
+
+.item-text {
+  display: block;
+  font-size: 1.08rem;
+  line-height: 1.4;
+  word-break: break-word;
+  margin-bottom: 8px;
+}
+
+#item-list .list-group-item.list-group-item-info > div {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  display: flex;
+  gap: 14px;
+}
+
+.edit-me.btn.btn-secondary.btn-sm,
+.delete-me.btn.btn-danger.btn-sm {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  box-shadow: none;
+}
+
+.edit-me.btn.btn-secondary.btn-sm {
+  color: var(--teal);
+}
+.edit-me.btn.btn-secondary.btn-sm:hover {
+  color: #1e4a41;
+}
+
+.delete-me.btn.btn-danger.btn-sm {
+  color: var(--danger);
+}
+.delete-me.btn.btn-danger.btn-sm:hover {
+  color: var(--danger-dark);
+}
+
+/* ---------- Hammasini o'chirish — ogohlantirish yorlig'i ---------- */
+
+#clean-all.btn.btn-danger {
+  display: block;
+  margin: 28px auto 0;
+  background: var(--danger);
+  border: none;
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 10px 20px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+#clean-all.btn.btn-danger:hover {
+  background: var(--danger-dark);
+  transform: translateY(-2px);
+}
+
+/* ---------- Yuklanish animatsiyasi ---------- */
+
+@keyframes pin-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #item-list .list-group-item.list-group-item-info {
+    animation: none;
+  }
+}
+
+/* ---------- Mobil ekranlar uchun ---------- */
+
+@media (max-width: 560px) {
+  h1.display-4 {
+    font-size: 2.4rem;
+  }
+
+  #create-form .d-flex {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  #create-form .btn.btn-primary {
+    margin-top: 12px;
+  }
+
+  #item-list.list-group {
+    grid-template-columns: 1fr;
+  }
+}
