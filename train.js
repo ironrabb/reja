@@ -1,3 +1,4 @@
+// DEPLOY LINK: http://187.53.138.28:9002/
 // MIT TASK G
 function getHighestIndex(arr) {
   // 1. Eng katta qiymatni topish
