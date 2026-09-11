@@ -17,7 +17,7 @@ MongoClient.connect(connectionString, {
 
     const app = require("./app.js");
     const server = http.createServer(app);
-    const PORT = 9002; // ❗ bu yerga ustoz sizga bergan portni yozing
+    const PORT = 9002; // 
 
     server.listen(PORT, function () {
       console.log(
