@@ -1,9 +1,34 @@
-// MIT TASK E reverse(hello) return olleh
-function teskari(str) {
-  return str.split("").reverse().join("");
+// MIT TASK G
+function getHighestIndex(arr) {
+  // 1. Eng katta qiymatni topish
+  let maxValue = arr[0];
+  let maxIndex = 0;
+
+  // 2. Array bo'ylab yurish
+  for (let i = 1; i < arr.length; i++) {
+    // Agar hozirgi qiymat kattaroq bo'lsa
+    if (arr[i] > maxValue) {
+      maxValue = arr[i];
+      maxIndex = i;
+    }
+    // Teng bo'lsa — birinchi indexni saqlaymiz (o'zgartirmaymiz!)
+  }
+
+  return maxIndex;
 }
 
-console.log(teskari("hello")); // olleh
+console.log(getHighestIndex([5, 21, 12, 21, 8])); // 1
+console.log(getHighestIndex([1, 2, 3, 4, 5])); // 4
+console.log(getHighestIndex([5, 4, 3, 2, 1])); // 0
+console.log(getHighestIndex([7, 7, 7, 7])); // 0
+console.log(getHighestIndex([42])); // 0
+
+// // MIT TASK E reverse(hello) return olleh
+// function teskari(str) {
+//   return str.split("").reverse().join("");
+// }
+
+// console.log(teskari("hello")); // olleh
 
 // // MIT TASK-D Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin, hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin. MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud! shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
 // class Oshxona {
