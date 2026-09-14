@@ -1,28 +1,38 @@
-// DEPLOY LINK: http://187.53.138.28:9002/
-// MIT TASK G
-function getHighestIndex(arr) {
-  // 1. Eng katta qiymatni topish
-  let maxValue = arr[0];
-  let maxIndex = 0;
-
-  // 2. Array bo'ylab yurish
-  for (let i = 1; i < arr.length; i++) {
-    // Agar hozirgi qiymat kattaroq bo'lsa
-    if (arr[i] > maxValue) {
-      maxValue = arr[i];
-      maxIndex = i;
-    }
-    // Teng bo'lsa — birinchi indexni saqlaymiz (o'zgartirmaymiz!)
-  }
-
-  return maxIndex;
+// MIT TASK - F
+function findDoublers(str) {
+  // Set ga har bir harfni qo'shamiz
+  // Agar Set uzunligi string uzunligidan kichik bo'lsa  takrorlangan
+  return new Set(str).size !== str.length;
 }
+console.log(findDoublers("hello")); // true (l ikki marta)
+console.log(findDoublers("world")); // false
+console.log(findDoublers("abcabc")); // true (a, b, c takrorlangan)
 
-console.log(getHighestIndex([5, 21, 12, 21, 8])); // 1
-console.log(getHighestIndex([1, 2, 3, 4, 5])); // 4
-console.log(getHighestIndex([5, 4, 3, 2, 1])); // 0
-console.log(getHighestIndex([7, 7, 7, 7])); // 0
-console.log(getHighestIndex([42])); // 0
+// // DEPLOY LINK: http://187.53.138.28:9002/
+// // MIT TASK G
+// function getHighestIndex(arr) {
+//   // 1. Eng katta qiymatni topish
+//   let maxValue = arr[0];
+//   let maxIndex = 0;
+
+//   // 2. Array bo'ylab yurish
+//   for (let i = 1; i < arr.length; i++) {
+//     // Agar hozirgi qiymat kattaroq bo'lsa
+//     if (arr[i] > maxValue) {
+//       maxValue = arr[i];
+//       maxIndex = i;
+//     }
+//     // Teng bo'lsa — birinchi indexni saqlaymiz (o'zgartirmaymiz!)
+//   }
+
+//   return maxIndex;
+// }
+
+// console.log(getHighestIndex([5, 21, 12, 21, 8])); // 1
+// console.log(getHighestIndex([1, 2, 3, 4, 5])); // 4
+// console.log(getHighestIndex([5, 4, 3, 2, 1])); // 0
+// console.log(getHighestIndex([7, 7, 7, 7])); // 0
+// console.log(getHighestIndex([42])); // 0
 
 // // MIT TASK E reverse(hello) return olleh
 // function teskari(str) {
