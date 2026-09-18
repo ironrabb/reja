@@ -1,12 +1,25 @@
-// MIT TASK - F
-function findDoublers(str) {
-  // Set ga har bir harfni qo'shamiz
-  // Agar Set uzunligi string uzunligidan kichik bo'lsa  takrorlangan
-  return new Set(str).size !== str.length;
+// MIT TASK K
+function unlilarniSana(matn) {
+  // O'zbek tilidagi barcha unli harflar (katta va kichik)
+  const unlilar = matn.match(/[aeuio]/gi);
+
+  // Agar unlilar topilsa, ularning sonini qaytaradi, aks holda 0
+  return unlilar ? unlilar.length : 0;
 }
-console.log(findDoublers("hello")); // true (l ikki marta)
-console.log(findDoublers("world")); // false
-console.log(findDoublers("abcabc")); // true (a, b, c takrorlangan)
+
+console.log(unlilarniSana("banana"));
+console.log(unlilarniSana(""));
+console.log(unlilarniSana("xyz"));
+
+// // MIT TASK - F
+// function findDoublers(str) {
+//   // Set ga har bir harfni qo'shamiz
+//   // Agar Set uzunligi string uzunligidan kichik bo'lsa  takrorlangan
+//   return new Set(str).size !== str.length;
+// }
+// console.log(findDoublers("hello")); // true (l ikki marta)
+// console.log(findDoublers("world")); // false
+// console.log(findDoublers("abcabc")); // true (a, b, c takrorlangan)
 
 // // DEPLOY LINK: http://187.53.138.28:9002/
 // // MIT TASK G
