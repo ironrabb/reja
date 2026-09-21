@@ -1,15 +1,22 @@
-// MIT TASK K
-function unlilarniSana(matn) {
-  // O'zbek tilidagi barcha unli harflar (katta va kichik)
-  const unlilar = matn.match(/[aeuio]/gi);
-
-  // Agar unlilar topilsa, ularning sonini qaytaradi, aks holda 0
-  return unlilar ? unlilar.length : 0;
+// MIT TASK L
+function reverseSentence(str) {
+  return str.replace(/\S+/g, (word) => word.split("").reverse().join(""));
 }
 
-console.log(unlilarniSana("banana"));
-console.log(unlilarniSana(""));
-console.log(unlilarniSana("xyz"));
+console.log(reverseSentence("we like coding!")); // "ew ekil !gnidoc"
+
+// // MIT TASK K
+// function unlilarniSana(matn) {
+//   // O'zbek tilidagi barcha unli harflar (katta va kichik)
+//   const unlilar = matn.match(/[aeuio]/gi);
+
+//   // Agar unlilar topilsa, ularning sonini qaytaradi, aks holda 0
+//   return unlilar ? unlilar.length : 0;
+// }
+
+// console.log(unlilarniSana("banana"));
+// console.log(unlilarniSana(""));
+// console.log(unlilarniSana("xyz"));
 
 // // MIT TASK - F
 // function findDoublers(str) {
@@ -150,12 +157,12 @@ console.log(unlilarniSana("xyz"));
 //   else if (a > 40 && a <= 50) return list[3];
 //   else if (a > 50 && a <= 60) return list[4];
 //   else {
-//     return new Promise((resolve, reject) => {
-//       // promise orqali set time out function ishlatish
-//       setTimeout(() => {
-//         resolve(list[5]);
-//       }, 5000);
-//     });
+// return new Promise((resolve, reject) => {
+//   // promise orqali set time out function ishlatish
+//   setTimeout(() => {
+//     resolve(list[5]);
+//   }, 5000);
+// });
 //     // return list[5];
 //     // setTimeout(function () {
 //     // return list[5];
